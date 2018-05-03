@@ -305,7 +305,7 @@ class Map(object):
         mesh2 = mesh2.transpose()
 
         mesh2[mesh2 > 0] = 1.0
-        mesh3 = mesh2.mask(mesh2 > 0)
+        mesh3 = mesh2.mask(mesh2 < 1.0) # Changed by Teri 03/05/2018
 
         x,y = self.m(lons, lats)
 
