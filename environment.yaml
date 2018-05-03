@@ -1,0 +1,12 @@
+name: nameplotting
+channels:
+- conda-forge
+dependencies:
+- python=2.7
+- matplotlib
+- shapely
+- numpy
+- arrow
+- geopandas
+- configobj
+- basemap

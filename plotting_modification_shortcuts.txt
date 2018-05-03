@@ -1,0 +1,33 @@
+Some modification short cuts for plotting:
+
+---------------------------------------------------------------------------
+CHANGE THE SCALE OF THE PLOT: 
+
+/home/m/mp558/Python/Pythonclone/namereader/namemap.py
+
+# Original scale (1.e-9, 1.e-5), infinity scale (1.e-6, 1.e-2)
+---------------------------------------------------------------------------
+CHANGE THE RUN-NAME ON THE NAME OUTPUTS TO MODIFY THE CAPTION:
+
+sed -i 's/TOWERG10/Beijing IAP tower 5m/g' *.txt
+
+# Use the above command in a terminal to modify to change the name
+#from TOWERG10 to Beijing ... 
+
+sed -i 's/Weybourne.*/Weybourne/g' *.txt
+
+# for things that start with Weybourne use .*
+---------------------------------------------------------------------------
+TO CHANGE THE Z (i.e. 0-100M) IN THE CAPTION:
+
+/home/m/mp558/Python/Pythonclone/namereader/name.py
+
+# Get altitude range information from column header            
+# Add a new Z under the rest
+---------------------------------------------------------------------------
+10, 5 AND 1 DAY PLOTS:
+
+# The multiplotter_solid.py onlu works on 15 NAME files at a time
+# Split in different folders if there are more than 15
+---------------------------------------------------------------------------
+
