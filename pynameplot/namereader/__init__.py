@@ -9,4 +9,4 @@
 # 
 # Available routines in library package listed below.
 
-__all__ = [ 'fileset', 'geom', 'header', 'namemap', 'name', 'shape', 'namesum', 'util' ]
+__all__ = ['drawmap', 'fileset', 'geom', 'header', 'namemap', 'name', 'shape', 'namesum', 'util']
