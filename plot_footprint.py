@@ -22,16 +22,16 @@ class TemporaryDirectory(object):
         shutil.rmtree(self.name)
 
 
-parser = argparse.ArgumentParser(prog='plot_footprint', formatter_class=argparse.RawDescriptionHelpFormatter,
-                                 description='Plot NAME concentration files on world map')
+parser = argparse.ArgumentParser(prog='plot_footprint', description='Plot NAME concentration files on world map')
 parser.add_argument('-i', '--infiles', nargs='+', required=True, help="NAME output files to plot")
 parser.add_argument('-o', '--outputdir', nargs='?', required=True, help="Plot output directory")
-parser.add_argument('-t', '--time', nargs='?', help='Specific datetime to plot (YYYY-MM-DD HH:MM UTC)')
-parser.add_argument('-d', '--day', nargs='?', help='Plot summary of this day')
-parser.add_argument('-w', '--week', nargs='?', help='Plot summary of this week')
-parser.add_argument('-m', '--month', nargs='?', help='Plot summary of this month')
-parser.add_argument('-y', '--year', nargs='?', help='Plot summary of this year')
-parser.add_argument('-a', '--all', action='store_true', default=False, help='Plot summary of all files')
+group = parser.add_mutually_exclusive_group(required=False)
+group.add_argument('-t', '--time', nargs='?', help='Specific datetime to plot (YYYY-MM-DD HH:MM UTC)')
+group.add_argument('-d', '--day', nargs='?', help='Plot summary of this day')
+group.add_argument('-w', '--week', nargs='?', help='Plot summary of this week')
+group.add_argument('-m', '--month', nargs='?', help='Plot summary of this month')
+group.add_argument('-y', '--year', nargs='?', help='Plot summary of this year')
+group.add_argument('-a', '--all', action='store_true', default=False, help='Plot summary of all files')
 
 args = parser.parse_args()
 
