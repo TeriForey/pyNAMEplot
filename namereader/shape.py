@@ -46,3 +46,11 @@ class Shape(object):
         self.lat_min = self.geo.bounds['miny'].min()
         self.lat_max = self.geo.bounds['maxy'].max()
 
+    def is_valid(self):
+        poly = self.cu
+        poly2 = poly.buffer(0)
+        if poly.exterior.is_valid and poly2.is_valid:
+            return True
+        else:
+            return False
+
