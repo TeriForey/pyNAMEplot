@@ -1,11 +1,9 @@
 #! /usr/bin/env python
 
-import os
 import argparse
 import tempfile
 import shutil
 import calendar
-from datetime import datetime
 
 from namereader import drawmap
 from namereader import name
@@ -21,8 +19,8 @@ class TemporaryDirectory(object):
     def __exit__(self, exc_type, exc_value, traceback):
         shutil.rmtree(self.name)
 
-def main():
 
+def main():
     parser = argparse.ArgumentParser(prog='plot_footprint', description='Plot NAME concentration files on world map')
     parser.add_argument('-i', '--infiles', nargs='+', required=True, help="NAME output files to plot")
     parser.add_argument('-o', '--outputdir', nargs='?', required=True, help="Plot output directory")
@@ -35,8 +33,6 @@ def main():
     group.add_argument('-a', '--all', action='store_true', default=False, help='Plot summary of all files')
 
     args = parser.parse_args()
-
-    print args
 
     if len(args.infiles) == 1:
         n = name.Name(args.infiles[0])
@@ -97,7 +93,7 @@ def main():
                 caption = "{} {} {} {}: {} year sum".format(s.runname, s.averaging, s.altitude, s.direction, args.year)
                 outfile = "{}_{}_yearly.png".format(s.runname, args.year)
 
-                drawmap.drawMap(s, column, outdir=args.outputdir)
+                drawmap.drawMap(s, column, caption=caption, outfile=outfile, outdir=args.outputdir)
 
             elif args.all:
                 # draw summed map for entire directory
@@ -105,7 +101,7 @@ def main():
 
                 caption = "{} {} {} {}: Summed".format(s.runname, s.averaging, s.altitude, s.direction)
                 outfile = "{}_summed_all.png".format(s.runname)
-                drawmap.drawMap(s, column, outdir=args.outputdir)
+                drawmap.drawMap(s, column, caption=caption, outfile=outfile, outdir=args.outputdir)
 
             else:
                 # draw maps for all timestamps and files in directory
@@ -120,5 +116,5 @@ def main():
         # End with so tempdir is deleted
 
 
-if __main__ == "__main__":
+if __name__ == "__main__":
     main()
