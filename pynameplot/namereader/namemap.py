@@ -12,7 +12,6 @@
 import numpy as np
 from mpl_toolkits.basemap import Basemap
 import matplotlib
-matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from matplotlib.collections import PatchCollection
@@ -28,6 +27,7 @@ import os
 # suppress matplotlib/basemap warnings
 import warnings
 warnings.filterwarnings("ignore")
+matplotlib.use('Agg')
 
 
 class Map(object):
@@ -227,7 +227,7 @@ class Map(object):
         self.patches = []
         
         if not (isinstance(files, list)):
-            raise 'invalid list of shapefiles'
+            raise Exception('invalid list of shapefiles')
 
         for shapefile in files:
             
@@ -252,7 +252,7 @@ class Map(object):
         self.colours = colours
 
         if not (isinstance(self.colours, list)):
-            raise 'Invalid list of zone colours'
+            raise Exception('Invalid list of zone colours')
 
         pc = PatchCollection(self.patches, match_original=True)
         pc.set_facecolor(self.colours)

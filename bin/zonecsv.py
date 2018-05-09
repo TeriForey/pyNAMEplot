@@ -21,9 +21,8 @@
 
 import argparse
 import pandas as pd
-import numpy as np
 import csv
-from namereader import *
+from pynameplot.namereader import fileset, name, util
 
 # -------------------------------------
 
@@ -86,7 +85,6 @@ with open(args.outfile, 'w') as csvfile:
 
     if 'geometry' in zones.columns:
         zones = zones.drop('geometry', 1)
-
 
     for n in sorted(files):
 

@@ -29,7 +29,7 @@ import itertools
 from shapely import speedups
 from shapely.geometry import Polygon
 
-from namereader import *
+from pynameplot.namereader import *
 
 if speedups.available:
     speedups.enable()
