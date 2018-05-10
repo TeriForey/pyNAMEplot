@@ -39,7 +39,7 @@ class Fileset:
             self.directory = directory
 
             if not os.path.isdir(directory):
-                  raise ValueError
+                  raise ValueError("Input argument is not a directory")
 
             self.files = glob.glob(directory + '/*.txt')
 

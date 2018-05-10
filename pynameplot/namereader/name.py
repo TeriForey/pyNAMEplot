@@ -49,7 +49,7 @@ class Name:
         self.crs = crs
 
         if not os.path.isfile(self.filename):
-            exit("Cannot find name file: {}".format(self.filename))
+            raise Exception("Cannot find name file: {}".format(self.filename))
 
         # Enable Shapely native C++ acceleration
         if speedups.available:
