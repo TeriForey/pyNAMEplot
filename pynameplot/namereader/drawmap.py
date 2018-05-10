@@ -3,8 +3,8 @@ import namemap
 
 
 def drawMap(n, column, projection=False, lon_bounds=(), lat_bounds=(), lon_axis=[], lat_axis=[],
-            scale=(), autoscale=True, caption=False, solid=False, color1=False, colormap=False, station=False,
-            outdir="", outfile=False):
+            scale=(), autoscale=True, caption=None, solid=False, color1="", colormap="", station=(),
+            outdir="", outfile=""):
     """
     Function will draw a footprint map, most values will not need to be set as defaults are okay.
     :param n: Name obj

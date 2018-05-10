@@ -2,15 +2,31 @@ NAME file analysis and plotting software
 ----------------------------------------
 (c)2017 J. Duncan Law-Green, Kyubi Systems
 
+pyNAMEplot provides a series of tools and functions to plot results of the Met Office dispersion model NAME. Code was originally written by J. Duncan Law-Green and edited by Teri Forey at the University of Leicester.
 
-### SET UP ENVIRONMENT
+### INSTALL
 
-To set up the correct Python environment to run the NAME scripts
+To install pre-built packages from Anaconda.org
 
-`source ./setup.sh`
+```angular2html
+conda install -c teriforey pynameplot
+```
 
-The prompt will change to include '(venv.geo)'.
+Note: pre-built binaries are not available for all operating systems.
 
+
+### DOWNLOAD AND SET  ENVIRONMENT
+
+Dependencies are available on Anaconda. To download and create the virtual environment required to run pyNAMEplot:
+
+```angular2html
+git clone https://github.com/TeriForey/pyNAMEplot
+cd pyNAMEplot/
+conda env create -f environment.yaml
+source activate pynameplot
+```
+
+TODO: Rewrite the rest of the README 
 
 ### SOFTWARE
 
