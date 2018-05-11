@@ -2,7 +2,7 @@ NAME file analysis and plotting software
 ----------------------------------------
 (c)2017 J. Duncan Law-Green, Kyubi Systems
 
-pyNAMEplot provides a series of tools and functions to plot results of the Met Office dispersion model NAME. Code was originally written by J. Duncan Law-Green and edited by Teri Forey at the University of Leicester.
+pyNAMEplot provides a series of tools and functions to plot results of the Met Office dispersion model NAME. The package was designed for the data extraction and analysis work of Zoe Fleming, National Centre for Atmospheric Science (NCAS). Code was originally written by J. Duncan Law-Green and edited by Teri Forey at the University of Leicester.
 
 ### INSTALL
 
