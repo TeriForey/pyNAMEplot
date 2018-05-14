@@ -2,12 +2,12 @@
 # Copyright 2017 Kyubi Systems
 # Licensed under the Apache License, Version 2.0 (see LICENSE)
 # ------------------------------------------------------------
-# 
+#
 # NAMEMAP
-# 
+#
 # Support libraries. Generate Matplotlib Basemap map plots for NAME geochemical
 # data sets.
-# 
+#
 
 import numpy as np
 from mpl_toolkits.basemap import Basemap
@@ -15,6 +15,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from matplotlib.collections import PatchCollection
+import Image
 import arrow
 
 from shapely.ops import transform
@@ -51,10 +52,10 @@ class Map(object):
         name   -- a loaded Name object containing parsed data
         column -- column name to plot. Default is 'total' column from summed file.
 
-        Default is to set auto-scale normalisation from 
+        Default is to set auto-scale normalisation from
         extremal values of input data.
         """
-        
+
         self.name = name
         self.column = column
         self.runname = runname
@@ -88,12 +89,12 @@ class Map(object):
 
         if self.column == 'total':
             suffix = 'Sum'
-        else: 
+        else:
             a = arrow.get(self.column, 'DD/MM/YYYY HH:mm')
             suffix = a.format('HHmm')
             if self.name.direction == 'Forwards':
                 suffix = a.shift(hours=-3).format('HHmm')
-                
+
         self.caption = '{} {} {} {} start of release: {} {}'.format(self.runname or self.name.runname, self.name.averaging, self.name.altitude, self.name.direction, release_date, suffix)
 
     def getFilename(self):
@@ -106,7 +107,7 @@ class Map(object):
 
         if self.column == 'total':
             suffix = 'sum_day'
-        else: 
+        else:
             a = arrow.get(self.column, 'DD/MM/YYYY HH:mm')
             suffix = a.format('HHmm')
             if self.name.direction == 'Forwards':
@@ -208,7 +209,7 @@ class Map(object):
 
         else:
             exit('Unsupported projection! Try cyl|npstere|spstere')
-        
+
         self.m.drawcoastlines(color='white', linewidth=0.6, zorder=14)
         self.m.drawcountries(color='white', zorder=14)
         self.m.drawmapboundary(fill_color='#444444')
@@ -225,15 +226,15 @@ class Map(object):
         """
 
         self.patches = []
-        
+
         if not (isinstance(files, list)):
             raise Exception('invalid list of shapefiles')
 
         for shapefile in files:
-            
+
             # read ESRI shapefile into GeoPandas object
             shape = gpd.GeoDataFrame.from_file(shapefile)
-            
+
             for poly in shape.geometry:
                 if poly.geom_type == 'Polygon':
                     mpoly = transform(self.m, poly)
@@ -242,7 +243,7 @@ class Map(object):
                     for subpoly in poly:
                         mpoly = transform(self.m, subpoly)
                         self.patches.append(PolygonPatch(mpoly))
-                    
+
     def zoneColour(self, colours):
         """
         Set display colours for defined ESRI shapes
@@ -260,7 +261,7 @@ class Map(object):
         pc.set_alpha(0.5)
         pc.set_linewidth(0.5)
         pc.set_zorder(20)
-        
+
         sq = self.ax.add_collection(pc)
 
     def zoneLines(self, edgecolour='black'):        #was 'red'
@@ -275,7 +276,7 @@ class Map(object):
         pc2.set_alpha(0.5) #5.0
         pc2.set_linewidth(0.5)
         pc2.set_zorder(25) # 500
-        
+
         sq2 = self.ax.add_collection(pc2)
 
     # --------------------------------------------------------
@@ -391,6 +392,15 @@ class Map(object):
         """
         x, y = self.m(lon, lat)
         self.m.plot(x, y, 'kx', markersize=4, zorder=15)
+
+    def addlogo(self, logofile, heightjump):
+        #logo = plt.imread(logofile)
+        #self.ax.imshow(logo, aspect='auto', extent=(0.4, 0.6, .5, .7), zorder=-1)
+
+        im = Image.open(logofile)
+        height = im.size[1]
+        im = np.array(im).astype(np.float) / 255
+        self.fig.figimage(im, self.fig.bbox.xmin + heightjump, self.fig.bbox.ymin+200)
 
     def saveFile(self, filename=None):
         """
