@@ -4,7 +4,7 @@ import namemap
 
 def drawMap(n, column, projection=False, lon_bounds=(), lat_bounds=(), lon_axis=[], lat_axis=[],
             scale=(), autoscale=True, caption=None, solid=False, color1="", colormap="", station=(),
-            outdir="", outfile=""):
+            outdir="", outfile="", logos=True):
     """
     Function will draw a footprint map, most values will not need to be set as defaults are okay.
     :param n: Name obj
@@ -78,10 +78,11 @@ def drawMap(n, column, projection=False, lon_bounds=(), lat_bounds=(), lon_axis=
         m.addMarker(station_lon, station_lat)
 
     # Add logos
-    m.addlogo(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))), "logos/MO_cropped_med.png"), 310)
-    m.addlogo(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))), "logos/CEDA.png"), 500)
-    m.addlogo(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))), "logos/NCAS_med.png"), 925)
-    m.addlogo(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))), "logos/UoL.png"), 1400)
+    if logos:
+        m.addlogo(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "logos/MO_cropped_med.png"), 310)
+        m.addlogo(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "logos/CEDA.png"), 500)
+        m.addlogo(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "logos/NCAS_med.png"), 925)
+        m.addlogo(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "logos/UoL.png"), 1400)
 
     # If output directory does not exist, create it
     if len(outdir) > 0:
