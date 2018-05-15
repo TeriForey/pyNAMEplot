@@ -400,7 +400,7 @@ class Map(object):
         im = Image.open(logofile)
         height = im.size[1]
         im = np.array(im).astype(np.float) / 255
-        self.fig.figimage(im, self.fig.bbox.xmin + heightjump, self.fig.bbox.ymin+200)
+        self.fig.figimage(im, self.fig.bbox.xmin + heightjump, self.fig.bbox.ymin+100)
 
     def saveFile(self, filename=None):
         """
