@@ -15,7 +15,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from matplotlib.collections import PatchCollection
-import Image
+from PIL import Image
 import arrow
 
 from shapely.ops import transform
