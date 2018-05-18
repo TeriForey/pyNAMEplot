@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='pyNAMEplot',
-      version='0.1.2',
+      version='0.1.3',
       description='Plots output of the NAME model',
       long_description=open("README.md").read(),
       url='https://github.com/TeriForey/pyNAMEplot',
@@ -17,5 +17,6 @@ setup(name='pyNAMEplot',
             'bin/makemastergrid.py',
             'bin/reproject.py',
             'bin/zonecsv.py',
+            'bin/plotter.py'
       ],
       )
