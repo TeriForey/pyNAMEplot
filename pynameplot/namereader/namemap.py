@@ -182,7 +182,7 @@ class Map(object):
         self.projection = projection
 
     # --------------------------------------------------------
-    def drawBase(self, caption, fontsize=10):
+    def drawBase(self, caption, fontsize=10, boarder_col="white", sea_col="#444444", land_col="#bbbbbb", grid_col="white"):
         """
         Set up map projection
         Draw basic map layout including coastlines and boundaries
@@ -210,12 +210,12 @@ class Map(object):
         else:
             exit('Unsupported projection! Try cyl|npstere|spstere')
 
-        self.m.drawcoastlines(color='white', linewidth=0.6, zorder=14)
-        self.m.drawcountries(color='white', zorder=14)
-        self.m.drawmapboundary(fill_color='#444444')
-        self.m.fillcontinents(color='#bbbbbb', lake_color='#444444')
-        self.m.drawparallels(self.lat_axis, linewidth=0.3, color='white', labels=[1, 0, 0, 1], zorder=14, fontsize=5)
-        self.m.drawmeridians(self.lon_axis, linewidth=0.3, color='white', labels=[1, 0, 0, 1], zorder=14, fontsize=5)
+        self.m.drawcoastlines(color=boarder_col, linewidth=0.6, zorder=14)
+        self.m.drawcountries(color=boarder_col, zorder=14)
+        self.m.drawmapboundary(fill_color=sea_col)
+        self.m.fillcontinents(color=land_col, lake_color=sea_col)
+        self.m.drawparallels(self.lat_axis, linewidth=0.3, color=grid_col, labels=[1, 0, 0, 1], zorder=14, fontsize=5)
+        self.m.drawmeridians(self.lon_axis, linewidth=0.3, color=grid_col, labels=[1, 0, 0, 1], zorder=14, fontsize=5)
 
         self.ax.set_title(caption, fontsize=fontsize)
     # --------------------------------------------------------

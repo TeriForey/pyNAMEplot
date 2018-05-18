@@ -4,7 +4,8 @@ import namemap
 
 def drawMap(n, column, projection=False, lon_bounds=(), lat_bounds=(), lon_axis=[], lat_axis=[],
             scale=(), autoscale=True, caption=None, solid=False, color1="", colormap="", station=(),
-            outdir="", outfile="", logos=True):
+            outdir="", outfile="", logos=True, boarder_col="white", sea_col="#444444", land_col="#bbbbbb",
+            grid_col="white"):
     """
     Function will draw a footprint map, most values will not need to be set as defaults are okay.
     :param n: Name obj
@@ -23,6 +24,11 @@ def drawMap(n, column, projection=False, lon_bounds=(), lat_bounds=(), lon_axis=
     :param station: tuple
     :param outdir: string
     :param outfile: string
+    :param logos: bool
+    :param boarder_col: string
+    :param sea_col: string
+    :param land_col: string
+    :param grid_col: string
     :return:
     """
     # Create Map object from NAME data
@@ -54,9 +60,9 @@ def drawMap(n, column, projection=False, lon_bounds=(), lat_bounds=(), lon_axis=
 
     # Set up data grid
     if caption:
-        m.drawBase(caption, fontsize=8)
+        m.drawBase(caption, fontsize=8, boarder_col=boarder_col, sea_col=sea_col, land_col=land_col, grid_col=grid_col)
     else:
-        m.drawBase(m.caption, fontsize=8)
+        m.drawBase(m.caption, fontsize=8, boarder_col=boarder_col, sea_col=sea_col, land_col=land_col, grid_col=grid_col)
 
     # Check for solid colouring flag
     if solid:
