@@ -12,7 +12,7 @@
 import numpy as np
 from mpl_toolkits.basemap import Basemap
 import matplotlib
-matplotlib.use('agg')
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from matplotlib.collections import PatchCollection

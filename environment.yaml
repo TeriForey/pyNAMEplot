@@ -11,3 +11,4 @@ dependencies:
 - configobj
 - basemap
 - pillow
+- pandas < 0.23
