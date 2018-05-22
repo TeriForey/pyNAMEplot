@@ -20,7 +20,6 @@
 # 
 
 import argparse
-import matplotlib
 import os
 import calendar
 import textwrap
@@ -28,7 +27,7 @@ import textwrap
 from configobj import ConfigObj
 
 # local NAME libraries
-from namereader import *
+from pynameplot.namereader import *
 
 """
 - plotter.py -
@@ -324,6 +323,5 @@ elif indir:
 
 else:
     raise ValueError('No input file or directory defined')
-    exit
 
 print '*** Done!'
