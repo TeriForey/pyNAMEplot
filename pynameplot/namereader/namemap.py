@@ -96,7 +96,13 @@ class Map(object):
             if self.name.direction == 'Forwards':
                 suffix = a.shift(hours=-3).format('HHmm')
 
-        self.caption = '{} {} {} {} start of release: {} {}'.format(self.runname or self.name.runname, self.name.averaging, self.name.altitude, self.name.direction, release_date, suffix)
+        self.caption = '{} {} {} {} start of {} release: {} {}'.format(self.runname or self.name.runname,
+                                                                    self.name.timerun,
+                                                                    self.name.direction.lower(),
+                                                                    self.name.altitude,
+                                                                    self.name.releasetime,
+                                                                    release_date,
+                                                                    suffix)
 
     def getFilename(self):
         """

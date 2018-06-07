@@ -118,6 +118,8 @@ class Name:
         field1 = fields[fields.columns[[0]]]
         self.ave = field1[6::1].values[0][0].strip()
         self.averaging = self.ave.replace(' integral','').replace('day ','days ').replace(' 0hr','').replace(' 0min','')
+        self.timerun = self.averaging.split(" ")[0]
+        self.releasetime = self.averaging.split(" ")[1]
 
         # Store run duration time
         dur = self.header['Run duration']
