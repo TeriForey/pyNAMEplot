@@ -38,6 +38,7 @@ class Sum(Name):
 
         self.files = sorted(self.fs.getAll())
         self.__addFiles(self.files)
+        self.sumby = 'all'
 
     def sumBetween(self, start, stop):
         """
@@ -57,6 +58,7 @@ class Sum(Name):
 
         self.files = sorted(self.fs.getDay(day))
         self.__addFiles(self.files)
+        self.sumby = 'day%s' % day
 
     def sumWeek(self, w):
         """
@@ -66,6 +68,7 @@ class Sum(Name):
 
         self.files = sorted(self.fs.weeks[w])
         self.__addFiles(self.files)
+        self.sumby = 'week%s' % w
 
     def sumMonth(self, m):
         """
@@ -75,6 +78,7 @@ class Sum(Name):
 
         self.files = sorted(self.fs.months[m])
         self.__addFiles(self.files)
+        self.sumby = 'month%s' % m
 
     def sumYear(self, y):
         """
@@ -84,6 +88,7 @@ class Sum(Name):
 
         self.files = sorted(self.fs.years[y])
         self.__addFiles(self.files)
+        self.sumby = "year%s" % y
 
     def __addFiles(self, files):
         """
@@ -102,6 +107,8 @@ class Sum(Name):
             self.release = n.release
             self.endrelease = n.endrelease
             self.averaging = n.averaging
+            self.timerun = n.timerun
+            self.releasetime = n.releasetime
             self.duration = n.duration
             self.altitude = n.altitude
             self.direction = n.direction

@@ -41,7 +41,7 @@ class Fileset:
             if not os.path.isdir(directory):
                   raise ValueError("Input argument is not a directory")
 
-            self.files = glob.glob(directory + '/*.txt')
+            self.files = glob.glob(directory + '/*_group*.txt')
 
             # group input filenames by week, month, year
             # generate dict of lists

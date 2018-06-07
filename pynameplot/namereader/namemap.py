@@ -113,7 +113,8 @@ class Map(object):
         base = os.path.splitext(base)[0]
 
         if self.column == 'total':
-            suffix = 'sum_day'
+            base = self.name.runname
+            suffix = 'sum_{}'.format(self.name.sumby)
         else:
             a = arrow.get(self.column, 'DD/MM/YYYY HH:mm')
             suffix = a.format('HHmm')
