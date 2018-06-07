@@ -1,5 +1,6 @@
 import os
 import namemap
+import util
 
 
 def drawMap(n, column, projection=False, lon_bounds=(), lat_bounds=(), lon_axis=[], lat_axis=[],
@@ -41,6 +42,10 @@ def drawMap(n, column, projection=False, lon_bounds=(), lat_bounds=(), lon_axis=
     # Set map bounds from config file, otherwise scale by grid file
     if lon_bounds and lat_bounds:
         m.setBounds(lon_bounds, lat_bounds)
+    elif lon_bounds:
+        m.setBounds(lon_bounds, n.lat_bounds)
+    elif lat_bounds:
+        m.setBounds(n.lon_bounds, lat_bounds)
     else:
         m.setBounds(n.lon_bounds, n.lat_bounds)
 
@@ -48,6 +53,17 @@ def drawMap(n, column, projection=False, lon_bounds=(), lat_bounds=(), lon_axis=
     if lon_axis and lat_axis:
         lon = [float(i) for i in lon_axis]
         lat = [float(i) for i in lat_axis]
+        m.setAxes(lon, lat)
+    elif lon_bounds or lat_bounds:
+        # The boundaries have been reset so need a sensible grid
+        if lon_bounds:
+            lon = util.get_axisticks(lon_bounds)
+        else:
+            lon = n.lon_grid
+        if lat_bounds:
+            lat = util.get_axisticks(lat_bounds)
+        else:
+            lat = n.lat_grid
         m.setAxes(lon, lat)
     else:
         m.setAxes(n.lon_grid, n.lat_grid)

@@ -28,3 +28,22 @@ def merge_dicts(*dict_args):
     for dictionary in dict_args:
         result.update(dictionary)
     return result
+
+def get_axisticks(bounds):
+    """
+    Given a boundary tuple, will calculate a reasonable set of axis tick marks
+    :param bounds: tuple
+    :return: list
+    """
+    if bounds[1] - bounds[0] > 20:
+        sep = 20
+    elif bounds[1] - bounds[0] > 10:
+        sep = 10
+    else:
+        sep = 2
+
+    start = bounds[0]
+    while start%sep != 0:
+        start += 1
+
+    return [float(i) for i in range(start, bounds[1], sep)]
