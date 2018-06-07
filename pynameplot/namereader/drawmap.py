@@ -97,7 +97,7 @@ def drawMap(n, column, projection=False, lon_bounds=(), lat_bounds=(), lon_axis=
     # Add station marker if defined
     if station:
         (station_lon, station_lat) = station
-        m.addMarker(station_lon, station_lat)
+        m.addMarker(float(station_lon), float(station_lat))
 
     # Add logos
     if logos:
