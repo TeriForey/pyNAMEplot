@@ -218,8 +218,8 @@ class Map(object):
         else:
             exit('Unsupported projection! Try cyl|npstere|spstere')
 
-        self.m.drawcoastlines(color=boarder_col, linewidth=0.6, zorder=14)
-        self.m.drawcountries(color=boarder_col, zorder=14)
+        self.m.drawcoastlines(color=boarder_col, linewidth=0.5, zorder=14)
+        self.m.drawcountries(color=boarder_col, linewidth=0.5, zorder=14)
         self.m.drawmapboundary(fill_color=sea_col)
         self.m.fillcontinents(color=land_col, lake_color=sea_col)
         self.m.drawparallels(self.lat_axis, linewidth=0.3, color=grid_col, labels=[1, 0, 0, 1], zorder=14, fontsize=5)
@@ -408,7 +408,7 @@ class Map(object):
         im = Image.open(logofile)
         height = im.size[1]
         im = np.array(im).astype(np.float) / 255
-        self.fig.figimage(im, self.fig.bbox.xmin + heightjump, self.fig.bbox.ymin+100)
+        self.fig.figimage(im, self.fig.bbox.xmin + heightjump, self.fig.bbox.ymin+10)
 
     def saveFile(self, filename=None):
         """
