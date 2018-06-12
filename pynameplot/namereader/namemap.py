@@ -190,7 +190,7 @@ class Map(object):
         self.projection = projection
 
     # --------------------------------------------------------
-    def drawBase(self, caption, fontsize=10, boarder_col="white", sea_col="#444444", land_col="#bbbbbb", grid_col="white"):
+    def drawBase(self, caption, fontsize=10, boarder_col="black", sea_col="white", land_col="#D1D1D1", grid_col="black"):
         """
         Set up map projection
         Draw basic map layout including coastlines and boundaries

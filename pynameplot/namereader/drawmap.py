@@ -5,8 +5,8 @@ import util
 
 def drawMap(n, column, projection=False, lon_bounds=(), lat_bounds=(), lon_axis=[], lat_axis=[],
             scale=(), autoscale=True, caption=None, solid=False, color1="", colormap="", station=(),
-            outdir="", outfile="", logos=True, boarder_col="white", sea_col="#444444", land_col="#bbbbbb",
-            grid_col="white"):
+            outdir="", outfile="", logos=True, boarder_col="black", sea_col="white", land_col="#D1D1D1",
+            grid_col="black"):
     """
     Function will draw a footprint map, most values will not need to be set as defaults are okay.
     :param n: Name obj
