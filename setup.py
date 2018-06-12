@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='pyNAMEplot',
-      version='0.1.3',
+      version='0.1.4',
       description='Plots output of the NAME model',
       long_description=open("README.md").read(),
       url='https://github.com/TeriForey/pyNAMEplot',
