@@ -101,10 +101,10 @@ def drawMap(n, column, projection=False, lon_bounds=(), lat_bounds=(), lon_axis=
 
     # Add logos
     if logos:
-        m.addlogo(os.path.join(os.path.dirname(os.path.dirname(__file__)), "logos/MO_cropped.png"), 100)
-        m.addlogo(os.path.join(os.path.dirname(os.path.dirname(__file__)), "logos/CEDA.png"), 500)
-        m.addlogo(os.path.join(os.path.dirname(os.path.dirname(__file__)), "logos/NCAS_med.png"), 905)
-        m.addlogo(os.path.join(os.path.dirname(os.path.dirname(__file__)), "logos/UoL.png"), 1370)
+        m.addlogo(os.path.join(os.path.dirname(os.path.dirname(__file__)), "logos/MO_cropped.png"), 250)
+        m.addlogo(os.path.join(os.path.dirname(os.path.dirname(__file__)), "logos/CEDA.png"), 700)
+        #m.addlogo(os.path.join(os.path.dirname(os.path.dirname(__file__)), "logos/NCAS_med.png"), 905)
+        m.addlogo(os.path.join(os.path.dirname(os.path.dirname(__file__)), "logos/UoL.png"), 1150)
 
     # If output directory does not exist, create it
     if len(outdir) > 0:
