@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='pyNAMEplot',
-      version='0.1.4',
+      version='0.1.5',
       description='Plots output of the NAME model',
       long_description=open("README.md").read(),
       url='https://github.com/TeriForey/pyNAMEplot',
@@ -17,6 +17,13 @@ setup(name='pyNAMEplot',
             'bin/makemastergrid.py',
             'bin/reproject.py',
             'bin/zonecsv.py',
-            'bin/plotter.py'
+            'bin/plotter.py',
+            'bin/multiplotter_solid.py',
+            'bin/multiplotter_fillcontour.py'
       ],
+      entry_points={
+            'console_scripts': [
+                  'plot_footprints = pynameplot.plot_footprint.__main__:main'
+            ]
+      }
       )
