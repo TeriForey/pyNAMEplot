@@ -95,7 +95,7 @@ def drawMap(n, column):
         station = config.get(station_name)
         if station:
             (station_lon, station_lat) = station
-            m.addMarker(station_lon, station_lat)
+            m.addMarker(float(station_lon), float(station_lat))
 
     # Add shapefile overlays if selected
     if shapelist:

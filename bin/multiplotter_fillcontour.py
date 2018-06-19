@@ -31,7 +31,7 @@ import numpy as np
 from configobj import ConfigObj
 
 # local NAME libraries
-from namereader import *
+from pynameplot.namereader import *
 
 """
 - multiplotter_fillcontour -
@@ -86,7 +86,7 @@ def drawMap(n, column, runname=''):
         station = config.get('station' + str(i))
         if station:
             (station_lon, station_lat) = station
-            x,y = m.m(station_lon, station_lat)
+            x,y = m.m(float(station_lon), float(station_lat))
             m.m.plot(x,y,'kx', markersize=4, color='black', zorder=25)
 
     return m
@@ -221,11 +221,16 @@ add_dir = {}
 add_color = {1: color1}
 
 for i in xrange(2,7):
-    add_file[i] = config.get('infile' + str(i))
-    add_dir[i] = config.get('indir' + str(i))
-    add_color[i] = config.get('color' + str(i))
+    if config.get('infile' + str(i)):
+        add_file[i] = config.get('infile' + str(i))
+    if config.get('indir' + str(i)):
+        add_dir[i] = config.get('indir' + str(i))
+    if config.get('color' + str(i)):
+        add_color[i] = config.get('color' + str(i))
 
 # read NAME data into object
+
+print add_dir
 
 if infile:
     n = name.Name(infile)
@@ -269,7 +274,7 @@ elif indir:
         map_obj = drawMap(s, 'total')
         map_obj = addSettoMap(map_obj, s, 1, 'total')
 
-        if i in add_dir:
+        for i in add_dir:
             s_i = namesum.Sum(add_dir[i])
             s_i.sumDay(day)
             map_obj = addSettoMap(map_obj, s_i, i, 'total')
@@ -286,7 +291,7 @@ elif indir:
         map_obj = drawMap(s, 'total')
         map_obj = addSettoMap(map_obj, s, 1, 'total')
 
-        if i in add_dir:
+        for i in add_dir:
             s_i = namesum.Sum(add_dir[i])
             s_i.sumWeek(week)
             map_obj = addSettoMap(map_obj, s_i, i, 'total')
@@ -303,7 +308,7 @@ elif indir:
         map_obj = drawMap(s, 'total')
         map_obj = addSettoMap(map_obj, s, 1, 'total')
 
-        if i in add_dir:
+        for i in add_dir:
             s_i = namesum.Sum(add_dir[i])
             s_i.sumMonth(month)
             map_obj = addSettoMap(map_obj, s_i, i, 'total')
@@ -320,7 +325,7 @@ elif indir:
         map_obj = drawMap(s, 'total')
         map_obj = addSettoMap(map_obj, s, 1, 'total')
 
-        if i in add_dir:
+        for i in add_dir:
             s_i = namesum.Sum(add_dir[i])
             s_i.sumYear(year)
             map_obj = addSettoMap(map_obj, s_i, i, 'total')

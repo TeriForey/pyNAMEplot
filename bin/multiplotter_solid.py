@@ -30,7 +30,7 @@ import calendar
 from configobj import ConfigObj
 
 # local NAME libraries
-from namereader import *
+from pynameplot.namereader import *
 
 """
 - multiplotter_solid -
@@ -85,7 +85,7 @@ def drawMap(n, column, runname=''):
         station = config.get('station' + str(i))
         if station:
             (station_lon, station_lat) = station
-            x,y = m.m(station_lon, station_lat)
+            x,y = m.m(float(station_lon), float(station_lat))
             m.m.plot(x,y,'kx', markersize=4, color='black', zorder=25)
 
     return m
@@ -120,7 +120,7 @@ def addSettoMap(m, n, i, column):
     mesh2 = mesh2.transpose()
     
     mesh2[mesh2 > 0] = 1.0
-    mesh3 = mesh2.mask(mesh2 > 0)
+    #mesh3 = mesh2.mask(mesh2 > 0)
 
     x,y = m.m(lons, lats)
     
@@ -128,7 +128,7 @@ def addSettoMap(m, n, i, column):
     cmap = matplotlib.colors.ListedColormap([rgba])
     norm = matplotlib.colors.LogNorm(vmin=0.99, vmax=1.0, clip=False)
     
-    c = m.m.pcolor(x, y, mesh3, norm=norm, cmap=cmap, zorder=zorder)
+    c = m.m.pcolor(x, y, mesh2, norm=norm, cmap=cmap, zorder=zorder)
     # c._is_stroked = False
 
     return m
@@ -221,9 +221,14 @@ add_dir = {}
 add_color = {1: color1}
 
 for i in xrange(2,7):
-    add_file[i] = config.get('infile' + str(i))
-    add_dir[i] = config.get('indir' + str(i))
-    add_color[i] = config.get('color' + str(i))
+    if config.get('infile' + str(i)):
+        add_file[i] = config.get('infile' + str(i))
+    if config.get('indir' + str(i)):
+        add_dir[i] = config.get('indir' + str(i))
+    if config.get('color' + str(i)):
+        add_color[i] = config.get('color' + str(i))
+
+print(add_dir)
 
 # read NAME data into object
 
