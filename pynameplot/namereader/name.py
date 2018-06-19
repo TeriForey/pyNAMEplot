@@ -24,6 +24,7 @@ import re
 from .header import loadheader
 from .geom import coverfactor, gridsquare
 from .shape import Shape
+from util import shortname
 
 
 class Name:
@@ -126,7 +127,7 @@ class Name:
         self.duration = dur.replace('day ','days ').replace(' 0hr','').replace(' 0min','')
 
         # Store date information from input filename
-        a = arrow.get(self.filename, 'YYYYMMDD')
+        a = arrow.get(shortname(self.filename), 'YYYYMMDD')
         self.year = a.format('YYYY')
         self.month = a.format('MM').zfill(2)
         self.day = a.format('DD').zfill(2)
