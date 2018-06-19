@@ -218,8 +218,8 @@ class Map(object):
         else:
             exit('Unsupported projection! Try cyl|npstere|spstere')
 
-        self.m.drawcoastlines(color=boarder_col, linewidth=0.5, zorder=14)
-        self.m.drawcountries(color=boarder_col, linewidth=0.5, zorder=14)
+        self.m.drawcoastlines(color=boarder_col, linewidth=0.4, zorder=14)
+        self.m.drawcountries(color=boarder_col, linewidth=0.4, zorder=14)
         self.m.drawmapboundary(fill_color=sea_col)
         self.m.fillcontinents(color=land_col, lake_color=sea_col)
         self.m.drawparallels(self.lat_axis, linewidth=0.3, color=grid_col, labels=[1, 0, 0, 1], zorder=14, fontsize=5)
@@ -288,7 +288,7 @@ class Map(object):
         sq2 = self.ax.add_collection(pc2)
 
     # --------------------------------------------------------
-    def setColormap(self, colormap='rainbow'):
+    def setColormap(self, colormap='coolwarm'):
         """
         Set colourmap with existing normalisation
         colormap -- Matplotlib colourmap name
