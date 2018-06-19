@@ -22,14 +22,6 @@ class Fileset:
       Read directory of NAME files, 
       extract subset corresponding to given time period
       """
-      directory = ''
-      files = []
-
-      dates = {}
-      weeks = defaultdict(list)
-      months = defaultdict(list)
-      years = defaultdict(list)
-
       def __init__(self, directory):
             """
             Initialise Fileset object.
@@ -37,6 +29,10 @@ class Fileset:
             directory -- input directory path
             """
             self.directory = directory
+            self.dates = {}
+            self.weeks = defaultdict(list)
+            self.months = defaultdict(list)
+            self.years = defaultdict(list)
 
             if not os.path.isdir(directory):
                   raise ValueError("Input argument is not a directory")

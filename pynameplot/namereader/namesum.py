@@ -19,9 +19,6 @@ class Sum(Name):
     Extends existing Name class
     """
 
-    directory = ''
-    files = []
-
     def __init__(self, directory):
         """
         Initialise Sum object
@@ -29,6 +26,7 @@ class Sum(Name):
         """
 
         self.directory = directory
+        self.files = []
         self.fs = Fileset(directory)
 
     def sumAll(self):

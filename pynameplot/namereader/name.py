@@ -33,8 +33,6 @@ class Name:
     """
 
     filename = ""
-    timestamps = []  
-    header = {}  
 
     def __init__(self, filename, crs = None):
         """
@@ -45,6 +43,9 @@ class Name:
         """
 
         self.filename = filename
+        self.timestamps = []
+        self.header = {}
+
         if crs is None:
             crs = {'init': 'EPSG:4326'}
         self.crs = crs

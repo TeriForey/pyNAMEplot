@@ -39,13 +39,6 @@ class Map(object):
     from NAME concentration data
     """
 
-    lon_range = []
-    lat_range = []
-    lon_axis = []
-    lat_axis = []
-
-    conc = []
-
     def __init__(self, name, column='total', runname=''):
         """
         Initialise Map object.
@@ -77,6 +70,13 @@ class Map(object):
 
         # set default fixed scale normalisation for output plot
         self.setFixedScale()
+
+        self.lon_range = []
+        self.lat_range = []
+        self.lon_axis = []
+        self.lat_axis = []
+
+        self.conc = []
 
     def getCaption(self):
         """
