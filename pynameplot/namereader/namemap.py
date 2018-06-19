@@ -96,7 +96,7 @@ class Map(object):
             if self.name.direction == 'Forwards':
                 suffix = a.shift(hours=-3).format('HHmm')
 
-        self.caption = '{} {} {} {} start of {} release: {} {}'.format(self.runname or self.name.runname,
+        self.caption = '{} {} {} {} start of {} release: {} {} (UTC)'.format(self.runname or self.name.runname,
                                                                     self.name.timerun,
                                                                     self.name.direction.lower(),
                                                                     self.name.altitude,
