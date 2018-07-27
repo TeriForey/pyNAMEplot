@@ -424,4 +424,17 @@ class Map(object):
         print 'Creating plot file: {}'.format(filename)
         self.fig.savefig(filename, dpi=300)
 
+    def free(self):
+        """Free up memory"""
+        self.column = ""
+        self.runname = ""
+        self.fig.clf()
+        plt.close('all')
+        del self.m, self.name
+        self.lon_range = []
+        self.lat_range = []
+        self.lon_axis = []
+        self.lat_axis = []
+        self.conc = []
+
     # --------------------------------------------------------

@@ -118,6 +118,9 @@ def drawMap(n, column, projection=False, lon_bounds=(), lat_bounds=(), lon_axis=
     else:
         m.saveFile()
 
+    m.free()
+    return
+
 
 def draw_shape_map(n, column, shapelist, shapelines=True, shapecolors=True):
 
