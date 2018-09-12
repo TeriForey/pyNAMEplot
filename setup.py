@@ -23,7 +23,7 @@ setup(name='pyNAMEplot',
       ],
       entry_points={
             'console_scripts': [
-                  'plot_footprints = pynameplot.plot_footprint.__main__:main'
+                  'plot_footprints = pynameplot.plot_footprint:main'
             ]
       }
       )
